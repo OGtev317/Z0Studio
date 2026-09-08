@@ -1,0 +1,9 @@
+{
+  "dispute_input_commitment": "1001",
+  "policy_id": "2001",
+  "program_measurement_commitment": "3001",
+  "required_score": 80,
+  "expires_at": 2000000000,
+  "evidence_score": 92,
+  "evidence_nonce": "12345"
+}

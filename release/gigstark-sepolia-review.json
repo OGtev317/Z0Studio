@@ -1,0 +1,438 @@
+{
+  "format": "gigstark-sepolia-review-v1",
+  "status": "NO_BROADCAST_REVIEW_CANDIDATE",
+  "network": {
+    "name": "Starknet Sepolia",
+    "chainId": "SN_SEPOLIA"
+  },
+  "source": {
+    "repository": "https://github.com/OGtev317/Gigstark",
+    "commit": "36dca38d94a2cf6e287646804af8ed73000b1b99",
+    "contractsTree": "79c49d1ded6f60cec272f5ee541ece3500409d27",
+    "archiveSha256": "7863751d62b9af6e1b37afc6bd0660307916c8fa21cc1e4c5bdc20c59274f144",
+    "scarbManifestSha256": "3d76071156b2c5cd7dc619ff8ad357b5dba94224f6db72aef0087d4c9dbd85f1",
+    "scarbLockSha256": "a746990d6a594b2654cf41e54d01b066845483e336cea76195aad45e8cee8874",
+    "lockUnchangedAfterBuild": true
+  },
+  "toolchain": {
+    "profile": "release",
+    "scarb": {
+      "version": "2.17.0",
+      "versionOutput": "scarb 2.17.0 (aa8740944 2026-04-09)\ncairo: 2.17.0 (https://crates.io/crates/cairo-lang-compiler/2.17.0)\nsierra: 1.8.0\narch: aarch64-apple-darwin",
+      "archive": "scarb-v2.17.0-aarch64-apple-darwin.tar.gz",
+      "archiveSha256": "eda88f32ec1c95a1159cd2cce4fb4a1c49dc66067b3f05fb3439254ab25e8294"
+    },
+    "starknetFoundry": {
+      "version": "0.59.0",
+      "versionOutput": "snforge 0.59.0",
+      "archive": "starknet-foundry-v0.59.0-aarch64-apple-darwin.tar.gz",
+      "archiveSha256": "8d7d6d48eb5bb9ae30014c1b7a044c65136fcc1ade4e1c4d7549b03d17cb39f5"
+    },
+    "starkli": {
+      "used": false,
+      "reason": "No declaration or deployment is authorized."
+    }
+  },
+  "packageGraph": {
+    "sha256": "e38f821269c1ef7df36f38a8de4bb9f77c73cda441c4680f5a1b886defad41c3",
+    "packages": [
+      {
+        "name": "assert_macros",
+        "version": "2.17.0",
+        "source": "std",
+        "dependencies": []
+      },
+      {
+        "name": "core",
+        "version": "2.17.0",
+        "source": "std",
+        "dependencies": [
+          "cairo_test"
+        ]
+      },
+      {
+        "name": "gigstark_escrow",
+        "version": "0.1.0",
+        "source": "workspace",
+        "dependencies": [
+          "assert_macros",
+          "core",
+          "openzeppelin",
+          "privacy",
+          "snforge_std",
+          "starknet",
+          "starkware_utils_testing"
+        ]
+      },
+      {
+        "name": "openzeppelin",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_access",
+          "openzeppelin_account",
+          "openzeppelin_finance",
+          "openzeppelin_governance",
+          "openzeppelin_interfaces",
+          "openzeppelin_introspection",
+          "openzeppelin_merkle_tree",
+          "openzeppelin_presets",
+          "openzeppelin_security",
+          "openzeppelin_token",
+          "openzeppelin_upgrades",
+          "openzeppelin_utils",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_access",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_interfaces",
+          "openzeppelin_introspection",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_account",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_interfaces",
+          "openzeppelin_introspection",
+          "openzeppelin_utils",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_finance",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_access",
+          "openzeppelin_interfaces",
+          "openzeppelin_token",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_governance",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_access",
+          "openzeppelin_interfaces",
+          "openzeppelin_introspection",
+          "openzeppelin_token",
+          "openzeppelin_utils",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_interfaces",
+        "version": "2.1.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "assert_macros",
+          "core",
+          "snforge_std",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_introspection",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_interfaces",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_merkle_tree",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core"
+        ]
+      },
+      {
+        "name": "openzeppelin_presets",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_access",
+          "openzeppelin_account",
+          "openzeppelin_finance",
+          "openzeppelin_interfaces",
+          "openzeppelin_introspection",
+          "openzeppelin_token",
+          "openzeppelin_upgrades",
+          "openzeppelin_utils",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_security",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_interfaces",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_token",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_access",
+          "openzeppelin_interfaces",
+          "openzeppelin_introspection",
+          "openzeppelin_utils",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_upgrades",
+        "version": "3.0.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "starknet"
+        ]
+      },
+      {
+        "name": "openzeppelin_utils",
+        "version": "2.1.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "openzeppelin_interfaces",
+          "starknet"
+        ]
+      },
+      {
+        "name": "privacy",
+        "version": "0.1.0",
+        "source": "git+https://github.com/starkware-libs/starknet-privacy?tag=PRIVACY-0.14.3-RC.0#fe52334dde1c5479176ab1e75311cf6e81a320c2",
+        "dependencies": [
+          "assert_macros",
+          "core",
+          "ekubo",
+          "ekubo_swap_anonymizer",
+          "openzeppelin",
+          "snforge_std",
+          "starknet",
+          "starkware_utils",
+          "starkware_utils_testing",
+          "vesu_lending_anonymizer"
+        ]
+      },
+      {
+        "name": "snforge_scarb_plugin",
+        "version": "0.59.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core"
+        ]
+      },
+      {
+        "name": "snforge_std",
+        "version": "0.59.0",
+        "source": "registry+https://scarbs.xyz/",
+        "dependencies": [
+          "core",
+          "snforge_scarb_plugin"
+        ]
+      },
+      {
+        "name": "starknet",
+        "version": "2.17.0",
+        "source": "std",
+        "dependencies": [
+          "core"
+        ]
+      },
+      {
+        "name": "starkware_utils",
+        "version": "1.0.0",
+        "source": "git+https://github.com/starkware-libs/starkware-starknet-utils?rev=0e12df09afe29f59a877a5b04801fedd8b31c50d#0e12df09afe29f59a877a5b04801fedd8b31c50d",
+        "dependencies": [
+          "assert_macros",
+          "core",
+          "openzeppelin",
+          "snforge_std",
+          "starknet",
+          "starkware_utils_testing"
+        ]
+      },
+      {
+        "name": "starkware_utils_testing",
+        "version": "1.0.0",
+        "source": "git+https://github.com/starkware-libs/starkware-starknet-utils?rev=0e12df09afe29f59a877a5b04801fedd8b31c50d#0e12df09afe29f59a877a5b04801fedd8b31c50d",
+        "dependencies": [
+          "assert_macros",
+          "core",
+          "openzeppelin",
+          "snforge_std",
+          "starknet",
+          "starkware_utils"
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "cleanCommittedContractArchive": true,
+    "releaseBuild": "passed",
+    "cairoTests": {
+      "passed": 37,
+      "failed": 0
+    },
+    "rpcRequests": false,
+    "transactionBroadcasts": false,
+    "fundMovements": false
+  },
+  "contracts": [
+    {
+      "name": "GigstarkComputeVerifier",
+      "modulePath": "gigstark_escrow::compute_verifier::GigstarkComputeVerifier",
+      "sierraClassHash": "0x79d1d487f137208ee34d835a69a3a02ff74e5d5810d20d2ad2d447811b813ba",
+      "compiledClassHash": "0x4f36e59f71873554c3be6f2913a352f3d549e8a1a14fa845def8a973101b6f6",
+      "sierraArtifactSha256": "5c7ff6101e1f0756b3c10f62c239c471d3267103be35b05a5ba6e385a9859d10",
+      "casmArtifactSha256": "af9db5b8fd6d6b3f35094e68f26c9a0b16338f699b1b2234814f43d9faed6b4f",
+      "sierraProgramLength": 3840,
+      "casmBytecodeLength": 6950,
+      "constructor": {
+        "arguments": [
+          {
+            "name": "admin",
+            "type": "core::starknet::contract_address::ContractAddress",
+            "value": null
+          }
+        ],
+        "reviewed": false
+      }
+    },
+    {
+      "name": "GigstarkEscrow",
+      "modulePath": "gigstark_escrow::GigstarkEscrow",
+      "sierraClassHash": "0x127ee108a876d183f36c20e56a6f1e002e101369986d35ecd0fc662a21b5076",
+      "compiledClassHash": "0x69576fff7e35935b09c6913f6e504e0494a7c7caf24267f6528477b0410d2f0",
+      "sierraArtifactSha256": "1d82248b997f00be1fcfe9590cb599acf58c2394562d3945e33a0dcb393ed534",
+      "casmArtifactSha256": "4a1240f596484c5c78a3f58898b1032dce499cb89b1d24f1fe4a581f3981518e",
+      "sierraProgramLength": 4817,
+      "casmBytecodeLength": 10555,
+      "constructor": {
+        "arguments": [
+          {
+            "name": "privacy_pool",
+            "type": "core::starknet::contract_address::ContractAddress",
+            "value": null
+          },
+          {
+            "name": "compute_verifier",
+            "type": "core::starknet::contract_address::ContractAddress",
+            "value": null
+          },
+          {
+            "name": "authorization_verifier",
+            "type": "core::starknet::contract_address::ContractAddress",
+            "value": null
+          }
+        ],
+        "reviewed": false
+      }
+    },
+    {
+      "name": "GigstarkPassportVerifier",
+      "modulePath": "gigstark_escrow::gigstark_passport::GigstarkPassportVerifier",
+      "sierraClassHash": "0x1100e7cd1d025630f7452935f6dd6846ae49728497f4c517c30ee9d8f1ecbd2",
+      "compiledClassHash": "0x7efe597fa0a36edcd666e3b533e64aecd2d2e01644a5c70f1d1b412ac487a92",
+      "sierraArtifactSha256": "1c6dae151ba2feead5b4aba840714e817df1a4dbda318ddb82adfc29b2d8f799",
+      "casmArtifactSha256": "8d49aa2992f198c4fc5343147ce16f41bb86593471d5b4b599455d2d19d9fe6a",
+      "sierraProgramLength": 2947,
+      "casmBytecodeLength": 5684,
+      "constructor": {
+        "arguments": [
+          {
+            "name": "admin",
+            "type": "core::starknet::contract_address::ContractAddress",
+            "value": null
+          }
+        ],
+        "reviewed": false
+      }
+    },
+    {
+      "name": "GigstarkSubscriptions",
+      "modulePath": "gigstark_escrow::subscriptions::GigstarkSubscriptions",
+      "sierraClassHash": "0x251bef92a83180e99d1504d94b6cd714bf40c383ba6f4a05660290c1901efed",
+      "compiledClassHash": "0x78f2b0ab69290b06427fb67d39f41268ad14a99b5066b0f64fb4be54f7df21e",
+      "sierraArtifactSha256": "0b09f85efd267d6c36707186a601ca7a840b4655cd4a2ecb8bddf0a0c0c0601b",
+      "casmArtifactSha256": "6bcf6b9da116f3a7f1c218d02715a265663a53bf02efd9de6e5ff09141c71280",
+      "sierraProgramLength": 3757,
+      "casmBytecodeLength": 7629,
+      "constructor": {
+        "arguments": [
+          {
+            "name": "privacy_pool",
+            "type": "core::starknet::contract_address::ContractAddress",
+            "value": null
+          },
+          {
+            "name": "authorization_verifier",
+            "type": "core::starknet::contract_address::ContractAddress",
+            "value": null
+          }
+        ],
+        "reviewed": false
+      }
+    },
+    {
+      "name": "GigstarkTierGate",
+      "modulePath": "gigstark_escrow::tier_gate::GigstarkTierGate",
+      "sierraClassHash": "0x3b997197d43bf07ea8f5994959ba6ef4d8ce23742a742a17c8e818aac7cdda8",
+      "compiledClassHash": "0x23a0fd9dc47d0d7ce6d277011a27b36208031214300e5b627845cfc1a16e8da",
+      "sierraArtifactSha256": "cbbab089095b5523157419fd2afc27d995eb49520a3226bd94ba54fdfed48e71",
+      "casmArtifactSha256": "62bdbae27d258248c92b0a745f09a047f3a34fec25615c915f8a1b5df0c93120",
+      "sierraProgramLength": 888,
+      "casmBytecodeLength": 1584,
+      "constructor": {
+        "arguments": [
+          {
+            "name": "authorization_verifier",
+            "type": "core::starknet::contract_address::ContractAddress",
+            "value": null
+          }
+        ],
+        "reviewed": false
+      }
+    }
+  ],
+  "externalBindings": {
+    "privacyPool": {
+      "address": "0x0254a6b2997ef52e9f830ce1f543f6b29768295e8d17e2267d672c552cfe0d91",
+      "sourceProvenance": "blocked_pending_starkware_issue_969",
+      "reviewedClassAllowlisted": false
+    }
+  },
+  "releaseGates": {
+    "independentCairoReview": "required",
+    "privacyPoolSourceReproduction": "required",
+    "constructorArguments": "unset_and_unreviewed",
+    "declaration": "not_authorized",
+    "deployment": "not_authorized",
+    "walletExecution": "blocked_until_prior_gates_pass"
+  }
+}

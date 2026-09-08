@@ -1,0 +1,7 @@
+services:
+  gigstark-dispute:
+    # Set this to an immutable registry reference, never a mutable tag.
+    image: ${GIGSTARK_OYSTER_IMAGE:?set an image@sha256 reference}
+    init: true
+    network_mode: host
+    restart: unless-stopped

@@ -1,0 +1,44 @@
+{
+  "format": "gigstark-mainnet-deployment-inputs-v1",
+  "network": {
+    "chainId": "SN_MAIN",
+    "privacyPool": "0x040337b1af3c663e86e333bab5a4b28da8d4652a15a69beee2b677776ffe812a",
+    "privacyPoolClassHash": "0x067dddd89d80fedadc06b6f160798f94800a4a70164e5a24301cd0d6076b554d"
+  },
+  "release": {
+    "manifestSha256": "ecf046cea0c4e488e4a6a2069ec24ec0a70bc61d6007983c85f497422d9dd165",
+    "independentReview": {
+      "url": null,
+      "reviewer": null,
+      "reviewedCommit": null,
+      "decision": null,
+      "unresolvedCritical": null,
+      "unresolvedHigh": null
+    }
+  },
+  "governance": {
+    "adminAddress": null,
+    "adminClassHash": null,
+    "controlType": null,
+    "threshold": null,
+    "signerSetReviewed": false,
+    "emergencyPolicyReviewed": false
+  },
+  "productionProof": {
+    "verifierClassHash": null,
+    "verifierCompiledClassHash": null,
+    "circuitSha256": null,
+    "verificationKeySha256": null,
+    "ceremonyReviewUrl": null
+  },
+  "attestor": {
+    "publicKey": null,
+    "rotationPolicyReviewed": false,
+    "compromisePolicyReviewed": false
+  },
+  "deployer": {
+    "accountAddress": null,
+    "accountClassHash": null,
+    "maximumTotalFeeFri": null
+  }
+}
