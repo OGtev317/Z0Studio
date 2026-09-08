@@ -6,7 +6,7 @@ Date: 2026-09-08
 
 Z0Studio was created as a separate local workspace at:
 
-`/Users/tevdev/Desktop/ZeeroStreamPro`
+`/Users/tevdev/Desktop/Z0Studio`
 
 The public hackathon deployment at `https://zeerostream.pages.dev/` is still
 live and should remain frozen until winners are announced on September 11, 2026.

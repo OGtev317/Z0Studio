@@ -3,7 +3,7 @@ import {
   zeeroStreamProBuildGates,
   zeeroStreamProPaymentLanes,
   zeeroStreamProPlans,
-} from "../lib/zeerostream-pro";
+} from "../lib/z0studio-pro";
 
 export function ProCommandCenter() {
   return (
