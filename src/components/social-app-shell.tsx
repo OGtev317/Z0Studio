@@ -5,13 +5,14 @@ import { CodeRain } from "./code-rain";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/pro", label: "Pro" },
+  { href: "/rooms", label: "Rooms" },
   { href: "/profiles", label: "Profiles" },
   { href: "/messages", label: "Messages" },
   { href: "/receipts", label: "Receipts" },
 ] as const;
 
 type SocialAppShellProps = {
-  active: "home" | "pro" | "profiles" | "messages" | "receipts";
+  active: "home" | "pro" | "rooms" | "profiles" | "messages" | "receipts";
   title: string;
   kicker: string;
   children: ReactNode;

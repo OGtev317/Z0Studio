@@ -1,0 +1,32 @@
+export const openSocialThreads = [
+  {
+    id: "thread-open-1",
+    author: "Zero Studio",
+    handle: "zero-studio",
+    audience: "Open",
+    title: "Public question before joining the room",
+    body: "Ask questions, follow creators, and join public threads without buying a room pass. Paid access begins only when a room or drop is unlocked.",
+    replies: 18,
+    boosts: 7,
+  },
+  {
+    id: "thread-open-2",
+    author: "Proof Cafe",
+    handle: "proof-cafe",
+    audience: "Open",
+    title: "Creator poll",
+    body: "Should the next paid drop cover nullifiers, private receipts, or creator treasury reporting?",
+    replies: 31,
+    boosts: 12,
+  },
+  {
+    id: "thread-open-3",
+    author: "Night Mode Labs",
+    handle: "night-mode",
+    audience: "Open",
+    title: "Room preview",
+    body: "The public thread can tease research direction. Room members get the full build log and gated files.",
+    replies: 9,
+    boosts: 4,
+  },
+] as const;

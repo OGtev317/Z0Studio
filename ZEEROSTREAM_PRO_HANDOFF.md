@@ -19,7 +19,10 @@ This Pro copy is safe to evolve without changing the judged artifact.
 - Removed the copied D1 database binding from `wrangler.jsonc` so the Pro copy
   does not accidentally target the hackathon feed database.
 - Added `/pro` as the creator operating room.
+- Added `/rooms` as the open-social plus gated-room model.
 - Added `ProCommandCenter` with pricing, payment lanes, and token boundaries.
+- Added `OpenSocialHub` for public X-style creator/user threads.
+- Added `CreatorRoomAccessFlow` for paid room feeds plus separate locked drops.
 - Reframed the homepage as a frozen-hackathon-to-Pro workspace split.
 - Preserved receipt room, private payment MVP, public feed, encrypted messaging,
   local marketplace, subscription planner, and ZeeroAgent access brain.
@@ -32,6 +35,13 @@ Z0Studio is the revenue-facing creator platform:
 - Pro: `$19/month` for private rooms, receipt-bound access, ZeeroAgent rules.
 - Studio: `$79/month` for multiple rooms, supporter tiers, and exportable
   access evidence.
+
+The social product now has two layers:
+
+- Open social layer: public timeline, replies, previews, and creator-user
+  conversation for discovery.
+- Gated room layer: creator-owned rooms, member-only feed visibility, and
+  separately purchasable locked drops.
 
 ## Thirdweb boundary
 

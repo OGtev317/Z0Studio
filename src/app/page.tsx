@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { CreatorRoomAccessFlow } from "../components/creator-room-access-flow";
+import { OpenSocialHub } from "../components/open-social-hub";
 import { PrivateCreatorReceiptRoom } from "../components/private-creator-receipt-room";
 import { PrivatePaymentMvp } from "../components/private-payment-mvp";
 import { ProCommandCenter } from "../components/pro-command-center";
@@ -27,14 +29,17 @@ export default function Home() {
         </div>
       </section>
 
+      <OpenSocialHub />
       <section className="social-tabs" aria-label="Home filters">
         <Link className="active" href="/">For you</Link>
+        <Link href="/rooms">Rooms</Link>
         <Link href="/profiles">Creators</Link>
         <Link href="/messages">Encrypted messages</Link>
         <Link href="/receipts">Receipts</Link>
       </section>
 
       <ProCommandCenter />
+      <CreatorRoomAccessFlow />
       <PublicSocialFeed seedPosts={socialPosts} />
 
       <ZeeroAgentAccessBrain />

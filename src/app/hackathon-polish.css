@@ -140,15 +140,235 @@
   line-height: 1.5;
 }
 
+.open-social-hub,
+.room-access-flow {
+  display: grid;
+  gap: 18px;
+  padding: 28px clamp(18px, 3vw, 30px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(0, 0, 0, .54);
+}
+
+.open-social-head,
+.room-access-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: end;
+}
+
+.open-social-head > div,
+.room-access-head > div {
+  max-width: 760px;
+}
+
+.open-social-head h2,
+.room-access-head h2 {
+  margin: 0 0 10px;
+  font-size: 30px;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.open-social-head p:not(.eyebrow),
+.room-access-head p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.open-social-head dl {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 8px;
+  margin: 0;
+}
+
+.open-social-head dl div {
+  min-width: 98px;
+  border: 1px solid var(--line);
+  padding: 10px;
+  background: var(--surface);
+}
+
+.open-social-head dt {
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.open-social-head dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.open-social-compose {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--line);
+  padding: 18px;
+  background: rgba(8, 14, 29, .72);
+}
+
+.open-social-compose label {
+  display: grid;
+  gap: 7px;
+  color: var(--zeero-silver);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.open-social-compose input,
+.open-social-compose textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #05070e;
+  color: var(--ink);
+  padding: 11px;
+  font: inherit;
+  font-size: 13px;
+  text-transform: none;
+}
+
+.open-thread-list,
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.open-thread-list article,
+.room-card {
+  border: 1px solid var(--line);
+  background: rgba(8, 14, 29, .74);
+}
+
+.open-thread-list article {
+  display: grid;
+  gap: 9px;
+  padding: 18px;
+}
+
+.open-thread-list span {
+  width: fit-content;
+  border: 1px solid var(--line);
+  padding: 4px 7px;
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.open-thread-list h3,
+.room-card h3 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.open-thread-list p,
+.open-thread-list small,
+.room-card small,
+.room-feed p,
+.room-boundary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.room-cover {
+  min-height: 74px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(31, 255, 147, .18), transparent 38%),
+    linear-gradient(45deg, rgba(248, 113, 113, .16), transparent 55%),
+    #05070e;
+}
+
+.room-card-body {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+}
+
+.room-feed {
+  display: grid;
+  gap: 7px;
+  border: 1px solid var(--line);
+  padding: 12px;
+}
+
+.room-feed.unlocked {
+  border-color: rgba(31, 255, 147, .55);
+  background: rgba(31, 255, 147, .07);
+}
+
+.room-feed.locked {
+  opacity: .72;
+}
+
+.drop-list {
+  display: grid;
+  gap: 8px;
+}
+
+.drop {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  padding: 10px;
+}
+
+.drop span {
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.drop.locked span {
+  color: var(--muted);
+}
+
+.drop b {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+}
+
+.room-boundary {
+  border-left: 3px solid var(--lime);
+  padding-left: 12px;
+}
+
 @media (max-width: 900px) {
   .pro-plan-grid,
   .pro-lanes,
-  .pro-gates {
+  .pro-gates,
+  .open-social-head,
+  .room-access-head,
+  .open-thread-list,
+  .room-grid {
     grid-template-columns: 1fr;
   }
 
   .pro-hero h2 {
     font-size: 30px;
+  }
+
+  .open-social-head dl {
+    grid-template-columns: 1fr;
+  }
+
+  .drop {
+    grid-template-columns: 1fr;
   }
 }
 
