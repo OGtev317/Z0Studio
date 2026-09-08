@@ -51,7 +51,7 @@ export const zeeroStreamProPaymentLanes = [
 
 export const zeeroStreamProBuildGates = [
   "Hackathon deployment remains frozen until judging results are announced on September 11, 2026.",
-  "This Pro copy may use thirdweb for login and checkout UX, but thirdweb is not Zeero consensus, proof, DA, settlement, or L1 monetary policy.",
+  "This Z0Studio copy may use thirdweb for login and checkout UX, but thirdweb is not Zeero consensus, proof, DA, settlement, or L1 monetary policy.",
   "No wallet signing, token deployment, paid checkout activation, Cloudflare account mutation, or mainnet action is wired in this local build.",
   "Any Zeero L1 currency remains governed by Zeero L1 tokenomics, operator, network, verifier, DA, and economics evidence.",
 ] as const;

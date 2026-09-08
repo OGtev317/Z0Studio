@@ -1,10 +1,10 @@
-# ZeeroStream Pro Handoff
+# Z0Studio Handoff
 
 Date: 2026-09-08
 
 ## Current status
 
-ZeeroStream Pro was created as a separate local workspace at:
+Z0Studio was created as a separate local workspace at:
 
 `/Users/tevdev/Desktop/ZeeroStreamPro`
 
@@ -14,8 +14,8 @@ This Pro copy is safe to evolve without changing the judged artifact.
 
 ## What was added
 
-- Renamed local package to `zeerostream-pro`.
-- Changed local Wrangler project name to `zeerostream-pro`.
+- Renamed local package to `z0studio`.
+- Changed local Wrangler project name to `z0studio`.
 - Removed the copied D1 database binding from `wrangler.jsonc` so the Pro copy
   does not accidentally target the hackathon feed database.
 - Added `/pro` as the creator operating room.
@@ -26,7 +26,7 @@ This Pro copy is safe to evolve without changing the judged artifact.
 
 ## Product direction
 
-ZeeroStream Pro is the revenue-facing creator platform:
+Z0Studio is the revenue-facing creator platform:
 
 - Free: public profile, local receipt demo, private room preview.
 - Pro: `$19/month` for private rooms, receipt-bound access, ZeeroAgent rules.

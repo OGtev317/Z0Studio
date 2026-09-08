@@ -24,7 +24,7 @@ function ProAside() {
   return (
     <>
       <h2>Pro boundary</h2>
-      <p>This workspace is the revenue product copy. The hackathon deployment stays frozen until judging closes.</p>
+      <p>Z0Studio is the revenue product copy. The hackathon deployment stays frozen until judging closes.</p>
       <dl>
         <div><dt>Login</dt><dd>thirdweb candidate</dd></div>
         <div><dt>Payment</dt><dd>Checkout candidate</dd></div>

@@ -1,7 +1,7 @@
-# ZeeroStream Pro
+# Z0Studio
 
-ZeeroStream Pro is the paid creator product copy split from the hackathon
-ZeeroStream artifact. The public hackathon deployment remains frozen until
+Z0Studio is the paid creator product copy split from the hackathon ZeeroStream
+artifact. The public hackathon deployment remains frozen until
 results are announced on September 11, 2026. This workspace is for building the
 Pro path: creator rooms, paid access, receipt-bound entitlements, ZeeroAgent
 policy logic, and gated payment/login integrations.
@@ -16,7 +16,7 @@ Local Pro route: `/pro`
   optional ZPRO app-credit tooling.
 - thirdweb is not Zeero consensus, proving, DA, settlement, verifier authority,
   L1 monetary policy, or decentralization evidence.
-- ZPRO, if launched, is an app credit for ZeeroStream Pro only. It is not the
+- ZPRO, if launched, is an app credit for Z0Studio only. It is not the
   Zeero L1 native currency and carries no migration promise.
 - STRK20 wallet actions remain guarded and separate from Pro subscription
   checkout.

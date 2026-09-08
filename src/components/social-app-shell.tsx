@@ -32,7 +32,7 @@ export function SocialAppShell({ active, title, kicker, children, aside }: Socia
         <aside className="social-rail" aria-label="Primary">
           <Link className="social-brand" href="/">
             <img src="/zeero-layer-2-logo.png" alt="" width="64" height="64" />
-            <span>ZeeroStream Pro</span>
+            <span>Z0Studio</span>
           </Link>
           <nav className="social-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
@@ -50,7 +50,7 @@ export function SocialAppShell({ active, title, kicker, children, aside }: Socia
             <div className="social-title-lockup">
               <img src="/zeero-layer-2-logo.png" alt="" width="108" height="108" />
               <div>
-                <p className="social-product-name">ZeeroStream Pro</p>
+                <p className="social-product-name">Z0Studio</p>
                 <h1 id="page-title">{title}</h1>
               </div>
             </div>

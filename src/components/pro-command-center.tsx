@@ -9,10 +9,10 @@ export function ProCommandCenter() {
   return (
     <section className="pro-command" aria-labelledby="pro-command-title">
       <div className="pro-hero">
-        <p className="eyebrow">ZeeroStream Pro</p>
+        <p className="eyebrow">Z0Studio</p>
         <h2 id="pro-command-title">A paid creator workspace with privacy-first access control.</h2>
         <p>
-          ZeeroStream Pro packages private rooms, creator receipts, tiered access, and ZeeroAgent policy
+          Z0Studio packages private rooms, creator receipts, tiered access, and ZeeroAgent policy
           decisions into a product that can earn revenue while the Zeero L1 protocol continues separately.
         </p>
         <div className="composer-actions">
@@ -21,7 +21,7 @@ export function ProCommandCenter() {
         </div>
       </div>
 
-      <div id="pro-pricing" className="pro-plan-grid" aria-label="ZeeroStream Pro pricing">
+      <div id="pro-pricing" className="pro-plan-grid" aria-label="Z0Studio pricing">
         {zeeroStreamProPlans.map((plan) => (
           <article className="pro-plan" key={plan.id}>
             <p className="eyebrow">{plan.audience}</p>

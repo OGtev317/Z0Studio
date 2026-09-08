@@ -11,15 +11,15 @@ export default function Home() {
   return (
     <SocialAppShell
       active="home"
-      kicker="Frozen hackathon base, Pro workspace copy"
-      title="ZeeroStream Pro starts from the shipped privacy creator demo."
+      kicker="Frozen hackathon base, Z0Studio product copy"
+      title="Z0Studio starts from the shipped privacy creator demo."
       aside={<HomeAside />}
     >
       <section className="feed-composer" aria-label="Private checkout prompt">
         <div className="composer-avatar" aria-hidden="true">ZS</div>
         <div>
           <h2>Build paid creator access without touching the judged deployment.</h2>
-          <p>This copy keeps the hackathon evidence intact and adds a Pro path for login, checkout, rooms, receipts, and ZeeroAgent access logic.</p>
+          <p>This copy keeps the hackathon evidence intact and adds the Z0Studio path for login, checkout, rooms, receipts, and ZeeroAgent access logic.</p>
           <div className="composer-actions">
             <Link className="button" href="/pro">Open Pro workspace</Link>
             <Link href="/receipts">View receipt room</Link>
@@ -48,7 +48,7 @@ function HomeAside() {
   return (
     <>
       <h2>Artifact split</h2>
-      <p>The public hackathon page remains frozen; this local workspace is the Pro product copy.</p>
+      <p>The public hackathon page remains frozen; this local workspace is the Z0Studio product copy.</p>
       <dl>
         <div><dt>Live page</dt><dd>Frozen</dd></div>
         <div><dt>Pro copy</dt><dd>Local build</dd></div>
