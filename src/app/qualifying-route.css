@@ -1,0 +1,27 @@
+.qualifying-route {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  list-style-position: inside;
+  padding: 0;
+  margin: 0 0 18px;
+  background: var(--line);
+}
+
+.qualifying-route li {
+  padding: 13px;
+  background: #050505;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.qualifying-route b {
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .qualifying-route {
+    grid-template-columns: 1fr;
+  }
+}

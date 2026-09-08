@@ -1,0 +1,48 @@
+{
+  "name": "zeerostream-pro",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "test": "tsx --test tests/*.test.ts",
+    "typecheck": "next typegen --webpack && tsc --noEmit",
+    "proof:build": "bash compute/zk/scripts/build-proof.sh",
+    "proof:verify": "bash compute/zk/scripts/verify-fixture.sh",
+    "compute:verify": "bash compute/verify-specimen.sh",
+    "verify:cairo-release": "tsx scripts/verify-cairo-release.ts",
+    "verify:starknet-health": "tsx scripts/verify-starknet-health.ts",
+    "verify:strk20-artifacts": "tsx scripts/reproduce-strk20-live-artifacts.ts",
+    "verify:strk20-pool": "tsx scripts/verify-strk20-sepolia.ts",
+    "verify:strk20-mainnet": "tsx scripts/verify-strk20-mainnet.ts",
+    "verify:hackathon-submission": "tsx scripts/verify-hackathon-submission.ts",
+    "review:mainnet-deployment": "tsx scripts/review-mainnet-deployment.ts",
+    "demo:video": "swift scripts/generate-zeerostream-demo-video.swift public/zeerostream-demo.mp4",
+    "demo:video:face": "npm run demo:video && swift scripts/compose-zeerostream-face-demo.swift /Users/tevdev/Downloads/IMG_6553.MOV public/zeerostream-demo.mp4 public/zeerostream-demo.mp4"
+  },
+  "dependencies": {
+    "@starknet-io/get-starknet-discovery": "6.0.2",
+    "@starknet-io/get-starknet-wallet-standard": "6.0.2",
+    "@starknet-io/types-js": "0.10.3",
+    "next": "16.3.2",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
+    "starknet": "10.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.2",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "circomlib": "2.0.5",
+    "snarkjs": "0.7.6",
+    "tsx": "4.23.12",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "overrides": {
+    "underscore": "1.13.8"
+  }
+}

@@ -1,0 +1,126 @@
+:root {
+  --starknet-navy: #0c0c4f;
+  --starknet-coral: #ec796b;
+  --starknet-pink: #e175b1;
+  --starknet-white: #fafafa;
+  --starknet-gradient: linear-gradient(110deg, var(--starknet-coral), var(--starknet-pink));
+  --retro-font: "Courier New", "Lucida Console", Monaco, monospace;
+}
+
+body {
+  background:
+    radial-gradient(circle at 88% 2%, rgba(236, 121, 107, 0.2), transparent 34rem),
+    radial-gradient(circle at 8% 42%, rgba(225, 117, 177, 0.13), transparent 36rem),
+    linear-gradient(180deg, rgba(12, 12, 79, 0.4), transparent 38rem),
+    var(--paper);
+  background-attachment: fixed;
+  font-family: var(--retro-font);
+  font-variant-ligatures: none;
+  text-rendering: geometricPrecision;
+}
+
+button,
+input,
+select {
+  font-family: var(--retro-font);
+}
+
+.mark,
+.badge,
+.eyebrow,
+.hero h1,
+.architecture h2,
+.compute-architecture h2,
+.wallet-check h2,
+.demo h2,
+.boundaries h2 {
+  font-family: var(--retro-font);
+}
+
+.hero h1 {
+  letter-spacing: -0.045em;
+}
+
+.hero h1 em {
+  font-family: var(--retro-font);
+  font-style: normal;
+  filter: drop-shadow(0 0 13px rgba(236, 121, 107, 0.2));
+}
+
+.hero h1 em::after {
+  content: "▌";
+  display: inline-block;
+  margin-left: 0.08em;
+  background: none;
+  color: var(--starknet-coral);
+  animation: retro-cursor 1.05s steps(1, end) infinite;
+}
+
+.badge,
+.eyebrow {
+  letter-spacing: 0.14em;
+  text-shadow: 0 0 12px currentColor;
+}
+
+.mark span,
+.hero h1 em {
+  background: var(--starknet-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.badge {
+  border-color: rgba(236, 121, 107, 0.52);
+  background: rgba(12, 12, 79, 0.48);
+  color: var(--starknet-coral);
+}
+
+.hero .eyebrow,
+.architecture article:first-child .eyebrow,
+.compute-architecture li b {
+  color: var(--starknet-coral);
+}
+
+.architecture article:nth-child(2) .eyebrow,
+.compute-architecture li:nth-child(even) b {
+  color: var(--starknet-pink);
+}
+
+.demo {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(236, 121, 107, 0.16), transparent 42%),
+    radial-gradient(circle at 8% 100%, rgba(225, 117, 177, 0.12), transparent 46%),
+    linear-gradient(135deg, rgba(12, 12, 79, 0.46), rgba(83, 90, 99, 0.045));
+}
+
+.step.active i {
+  background: var(--starknet-pink);
+  box-shadow: 0 0 18px rgba(225, 117, 177, 0.42);
+}
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--starknet-coral);
+  outline-offset: 3px;
+}
+
+@keyframes retro-cursor {
+  0%,
+  48% {
+    opacity: 1;
+  }
+
+  49%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 em::after {
+    animation: none;
+  }
+}

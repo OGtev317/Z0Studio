@@ -1,0 +1,1 @@
+.panel{border:1px solid var(--line);padding:34px;margin:0 0 70px;max-width:760px}.panel p:not(.eyebrow):not(.notice){color:var(--muted);max-width:620px;line-height:1.55}.notice{border-top:1px solid var(--line);padding-top:17px;margin-top:24px;font-family:monospace;font-size:12px;color:var(--muted)}
