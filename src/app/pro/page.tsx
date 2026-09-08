@@ -1,7 +1,9 @@
+import { CheckoutIntentForm } from "../../components/checkout-intent-form";
 import { MarketplaceWorkspace } from "../../components/marketplace-workspace";
 import { ProCommandCenter } from "../../components/pro-command-center";
 import { SocialAppShell } from "../../components/social-app-shell";
 import { SubscriptionPlanner } from "../../components/subscription-planner";
+import { ThirdwebReadinessPanel } from "../../components/thirdweb-readiness-panel";
 import { ZeeroAgentAccessBrain } from "../../components/zeeroagent-access-brain";
 
 export default function ProPage() {
@@ -13,6 +15,8 @@ export default function ProPage() {
       aside={<ProAside />}
     >
       <ProCommandCenter />
+      <ThirdwebReadinessPanel />
+      <CheckoutIntentForm />
       <ZeeroAgentAccessBrain />
       <MarketplaceWorkspace />
       <SubscriptionPlanner />

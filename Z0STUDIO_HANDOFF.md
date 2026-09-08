@@ -23,6 +23,8 @@ This Pro copy is safe to evolve without changing the judged artifact.
 - Added `ProCommandCenter` with pricing, payment lanes, and token boundaries.
 - Added `OpenSocialHub` for public X-style creator/user threads.
 - Added `CreatorRoomAccessFlow` for paid room feeds plus separate locked drops.
+- Added a fail-closed thirdweb readiness panel.
+- Added a browser-local checkout intent form for creator onboarding.
 - Reframed the homepage as a frozen-hackathon-to-Pro workspace split.
 - Preserved receipt room, private payment MVP, public feed, encrypted messaging,
   local marketplace, subscription planner, and ZeeroAgent access brain.
@@ -74,7 +76,7 @@ thirdweb must not be used as a substitute for:
 
 1. Install dependencies in the Pro copy and run tests.
 2. Build the static Next export locally.
-3. Add a fail-closed thirdweb configuration module that exposes only disabled
-   UI until a client ID and checkout targets are explicitly configured.
-4. Add a local-only checkout intent form for Pro onboarding.
-5. Add creator-room templates tied to receipt/access policy.
+3. Add creator-room templates tied to receipt/access policy.
+4. Add persistent room customization storage after a backend decision.
+5. Add thirdweb SDK wiring only after public client ID, checkout targets, and
+   payment policy are reviewed.
