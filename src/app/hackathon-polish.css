@@ -474,6 +474,147 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.privacy-payment-setup {
+  display: grid;
+  gap: 18px;
+  padding: 28px clamp(18px, 3vw, 30px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(3, 8, 25, .72);
+}
+
+.privacy-payment-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+}
+
+.privacy-payment-head > div {
+  max-width: 780px;
+}
+
+.privacy-payment-head h2 {
+  margin: 0 0 10px;
+  font-size: 30px;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.privacy-payment-head p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.privacy-payment-steps,
+.privacy-payment-boundaries,
+.privacy-intent-grid,
+.privacy-intent-list {
+  display: grid;
+  gap: 12px;
+}
+
+.privacy-payment-steps {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.privacy-payment-steps li {
+  display: grid;
+  gap: 9px;
+  border: 1px solid var(--line);
+  padding: 16px;
+  background: rgba(0, 0, 0, .62);
+}
+
+.privacy-payment-steps span {
+  width: fit-content;
+  border: 1px solid var(--lime);
+  padding: 4px 7px;
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.privacy-payment-steps b,
+.privacy-intent-list b {
+  font-size: 14px;
+}
+
+.privacy-payment-steps p,
+.privacy-intent-list p,
+.privacy-intent-list small,
+.privacy-intent-list span {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.privacy-intent-panel {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--line);
+  padding: 18px;
+  background: rgba(8, 14, 29, .74);
+}
+
+.privacy-intent-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) auto;
+  align-items: end;
+}
+
+.privacy-intent-grid label {
+  display: grid;
+  gap: 7px;
+  color: var(--zeero-silver);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.privacy-intent-grid input,
+.privacy-intent-grid select {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #05070e;
+  color: var(--ink);
+  padding: 11px;
+  font: inherit;
+  font-size: 13px;
+  text-transform: none;
+}
+
+.privacy-intent-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.privacy-intent-list article {
+  display: grid;
+  gap: 7px;
+  border: 1px solid var(--line);
+  padding: 14px;
+  background: rgba(0, 0, 0, .58);
+}
+
+.privacy-payment-boundaries {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.privacy-payment-boundaries p {
+  margin: 0;
+  border-left: 3px solid var(--lime);
+  padding: 10px 12px;
+  background: rgba(31, 255, 147, .08);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 @media (max-width: 900px) {
   .pro-plan-grid,
   .pro-lanes,
@@ -485,7 +626,12 @@
   .thirdweb-lanes,
   .thirdweb-boundaries,
   .checkout-intent-grid,
-  .checkout-intent-list {
+  .checkout-intent-list,
+  .privacy-payment-head,
+  .privacy-payment-steps,
+  .privacy-intent-grid,
+  .privacy-intent-list,
+  .privacy-payment-boundaries {
     grid-template-columns: 1fr;
   }
 

@@ -23,8 +23,11 @@ This Pro copy is safe to evolve without changing the judged artifact.
 - Added `ProCommandCenter` with pricing, payment lanes, and token boundaries.
 - Added `OpenSocialHub` for public X-style creator/user threads.
 - Added `CreatorRoomAccessFlow` for paid room feeds plus separate locked drops.
-- Added a fail-closed thirdweb readiness panel.
-- Added a browser-local checkout intent form for creator onboarding.
+- Added STRK20 shielded checkout setup as the primary payment lane.
+- Added browser-local privacy-payment intents for room entry, locked drops, and
+  creator tips.
+- Demoted thirdweb to optional/non-core social UX; it is not required for
+  checkout when Z0Studio uses shielded privacy payments.
 - Reframed the homepage as a frozen-hackathon-to-Pro workspace split.
 - Preserved receipt room, private payment MVP, public feed, encrypted messaging,
   local marketplace, subscription planner, and ZeeroAgent access brain.
@@ -47,11 +50,11 @@ The social product now has two layers:
 
 ## Thirdweb boundary
 
-thirdweb may be used for:
+thirdweb is no longer part of the primary checkout path. It may still be used
+later for:
 
 - Social login and embedded wallet UX.
-- Checkout and payment routing.
-- Optional ZPRO app-credit tooling.
+- Non-core onboarding convenience.
 
 thirdweb must not be used as a substitute for:
 
@@ -61,6 +64,7 @@ thirdweb must not be used as a substitute for:
 - Zeero settlement.
 - Zeero L1 native currency policy.
 - Any claim that Zeero L1 is live.
+- STRK20 Wallet API shielded checkout.
 
 ## Explicitly not done
 
