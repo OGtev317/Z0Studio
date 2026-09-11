@@ -40,6 +40,9 @@ function mockDb(seed: Row[] = []): D1DatabaseBinding & { rows: Row[] } {
           }
           return { results: rows.slice().sort((a, b) => b.created_at - a.created_at) as T[] };
         },
+        async first<T>() {
+          return null as T | null;
+        },
         async run() {
           assert.match(query, /INSERT/);
           rows.push({
@@ -67,7 +70,7 @@ test("feed API reports local fallback when D1 is not configured", async () => {
   const postResponse = await onRequestPost({
     request: new Request("https://example.com/api/feed", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", origin: "https://example.com" },
       body: JSON.stringify({ author: "Zero Studio", handle: "zero-studio", body: "Public update", createdAt: 100 }),
     }),
     env: {},
@@ -75,7 +78,7 @@ test("feed API reports local fallback when D1 is not configured", async () => {
   assert.equal(postResponse.status, 503);
 });
 
-test("feed API cannot publish as a creator even when D1 is bound", async () => {
+test("feed API requires a signed-in account before it accepts a public post", async () => {
   const db = mockDb();
   const response = await onRequestPost({
     request: new Request("https://example.com/api/feed", {
@@ -83,17 +86,17 @@ test("feed API cannot publish as a creator even when D1 is bound", async () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ author: "Zero Studio", handle: "zero-studio", title: "Drop", body: "Public update", createdAt: 100 }),
     }),
-    env: { ZEEROSTREAM_FEED_DB: db },
+    env: { Z0STUDIO_DB: db },
   });
   assert.equal(response.status, 403);
   assert.equal(db.rows.length, 0);
-  const getResponse = await onRequestGet({ request: new Request("https://example.com/api/feed"), env: { ZEEROSTREAM_FEED_DB: db } });
+  const getResponse = await onRequestGet({ request: new Request("https://example.com/api/feed"), env: { Z0STUDIO_DB: db } });
   const payload = await getResponse.json() as { posts: Array<{ title: string }>; mode: string };
-  assert.equal(payload.mode, "local-fallback");
-  assert.ok(payload.posts.length >= 3);
+  assert.equal(payload.mode, "shared");
+  assert.equal(payload.posts.length, 0);
 });
 
-test("feed API rejects private material before D1 write", async () => {
+test("feed API rejects a cross-site write before it reaches storage", async () => {
   const db = mockDb();
   const response = await onRequestPost({
     request: new Request("https://example.com/api/feed", {
@@ -101,14 +104,14 @@ test("feed API rejects private material before D1 write", async () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ author: "Zero Studio", handle: "zero-studio", body: "private_key=0x123", createdAt: 100 }),
     }),
-    env: { ZEEROSTREAM_FEED_DB: db },
+    env: { Z0STUDIO_DB: db },
   });
   assert.equal(response.status, 403);
-  assert.deepEqual(await response.json(), { error: "PUBLIC_FEED_PUBLISHING_DISABLED" });
+  assert.deepEqual(await response.json(), { error: "ORIGIN_REQUIRED" });
   assert.equal(db.rows.length, 0);
 });
 
-test("feed API leaves existing records untouched when publishing is disabled", async () => {
+test("feed API leaves existing records untouched without an authenticated session", async () => {
   const now = Date.now();
   const db = mockDb(Array.from({ length: 5 }, (_, index) => ({
     author: "Zero Studio",
@@ -123,9 +126,9 @@ test("feed API leaves existing records untouched when publishing is disabled", a
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ author: "Zero Studio", handle: "zero-studio", body: "Public update", createdAt: 2000 }),
     }),
-    env: { ZEEROSTREAM_FEED_DB: db },
+    env: { Z0STUDIO_DB: db },
   });
   assert.equal(response.status, 403);
-  assert.deepEqual(await response.json(), { error: "PUBLIC_FEED_PUBLISHING_DISABLED" });
+  assert.deepEqual(await response.json(), { error: "ORIGIN_REQUIRED" });
   assert.equal(db.rows.length, 5);
 });

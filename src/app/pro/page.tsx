@@ -1,25 +1,26 @@
-import { MarketplaceWorkspace } from "../../components/marketplace-workspace";
-import { PrivacyPaymentSetup } from "../../components/privacy-payment-setup";
+import { CreatorRoomAccessFlow } from "../../components/creator-room-access-flow";
+import { CreatorWorkspace } from "../../components/creator-workspace";
 import { ProCommandCenter } from "../../components/pro-command-center";
-import { PrivatePaymentMvp } from "../../components/private-payment-mvp";
 import { SocialAppShell } from "../../components/social-app-shell";
-import { SubscriptionPlanner } from "../../components/subscription-planner";
-import { ZeeroAgentAccessBrain } from "../../components/zeeroagent-access-brain";
 
 export default function ProPage() {
   return (
     <SocialAppShell
       active="pro"
-      kicker="Creator operating room"
-      title="Run paid access without exposing the whole relationship graph."
+      kicker="Creator studio"
+      title="Build the space your community comes back to."
       aside={<ProAside />}
     >
       <ProCommandCenter />
-      <PrivacyPaymentSetup />
-      <PrivatePaymentMvp />
-      <ZeeroAgentAccessBrain />
-      <MarketplaceWorkspace />
-      <SubscriptionPlanner />
+      <CreatorWorkspace />
+      <section id="room-templates" className="creator-template-section" aria-label="Choose a room template">
+        <div>
+          <p className="eyebrow">Room templates</p>
+          <h2>Start with the room that matches your community.</h2>
+          <p>Choose a simple member room, a focused cohort, or a space made for drops.</p>
+        </div>
+        <CreatorRoomAccessFlow showRooms={false} showTemplates />
+      </section>
     </SocialAppShell>
   );
 }
@@ -27,13 +28,12 @@ export default function ProPage() {
 function ProAside() {
   return (
     <>
-      <h2>Pro boundary</h2>
-      <p>Z0Studio is the revenue product copy. The hackathon deployment stays frozen until judging closes.</p>
+      <h2>Your creator space</h2>
+      <p>Create a recognizable home for the people who care about your work.</p>
       <dl>
-        <div><dt>Login</dt><dd>Wallet first</dd></div>
-        <div><dt>Payment</dt><dd>STRK20 primary</dd></div>
-        <div><dt>Token</dt><dd>Z0Pass receipts</dd></div>
-        <div><dt>L1</dt><dd>Separate protocol asset</dd></div>
+        <div><dt>Profile</dt><dd>Your public home</dd></div>
+        <div><dt>Room</dt><dd>Your member space</dd></div>
+        <div><dt>Membership</dt><dd>Your recurring support</dd></div>
       </dl>
     </>
   );

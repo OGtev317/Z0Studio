@@ -1,29 +1,22 @@
 import {
   createPublicFeedPost,
   type PublicFeedPost,
-  type PublicFeedPostInput,
 } from "../../src/lib/public-feed";
 import { socialPosts } from "../../src/lib/social-content";
+import {
+  cleanLongText,
+  databaseOrResponse,
+  errorResponse,
+  json,
+  parseJsonObject,
+  requireAccount,
+  requireSameOrigin,
+  type D1DatabaseBinding,
+  type D1PreparedStatement,
+  type PagesContext,
+} from "../_lib/z0studio-server";
 
-type PublicFeedPostDraft = Omit<PublicFeedPostInput, "createdAt">;
-type D1Result<T> = { results?: T[] };
-export type D1PreparedStatement = {
-  bind(...values: unknown[]): D1PreparedStatement;
-  all<T = unknown>(): Promise<D1Result<T>>;
-  run(): Promise<unknown>;
-};
-export type D1DatabaseBinding = {
-  prepare(query: string): D1PreparedStatement;
-};
-
-type Env = {
-  ZEEROSTREAM_FEED_DB?: D1DatabaseBinding;
-};
-
-type PagesContext = {
-  request: Request;
-  env: Env;
-};
+export type { D1DatabaseBinding, D1PreparedStatement } from "../_lib/z0studio-server";
 
 type FeedRow = {
   author: string;
@@ -42,21 +35,39 @@ const FALLBACK_POSTS = socialPosts.map((post) => createPublicFeedPost({
   source: "seed",
 }));
 
-const JSON_HEADERS = {
-  "content-type": "application/json; charset=utf-8",
-  "cache-control": "no-store",
-};
-
 export async function onRequestGet(context: PagesContext): Promise<Response> {
-  // Shared creator identity verification is not implemented in this release.
-  return Response.json({ posts: FALLBACK_POSTS, mode: "local-fallback", publishingEnabled: false }, { headers: JSON_HEADERS });
+  const db = databaseOrResponse(context);
+  if (db instanceof Response) return json({ posts: FALLBACK_POSTS, mode: "local-fallback", publishingEnabled: false });
+  const rows = await db.prepare("SELECT author, handle, title, body, created_at FROM public_posts ORDER BY created_at DESC LIMIT 50").all<FeedRow>();
+  return json({ posts: rowsToPosts(rows.results ?? []), mode: "shared", publishingEnabled: true });
 }
 
 export async function onRequestPost(context: PagesContext): Promise<Response> {
-  if (!context.env.ZEEROSTREAM_FEED_DB) {
-    return Response.json({ error: "PUBLIC_FEED_STORAGE_NOT_CONFIGURED" }, { status: 503, headers: JSON_HEADERS });
+  try {
+    requireSameOrigin(context.request);
+    const account = await requireAccount(context);
+    if (account instanceof Response) return account;
+    const db = databaseOrResponse(context);
+    if (db instanceof Response) return db;
+    const body = await parseJsonObject(context.request);
+    const now = Date.now();
+    if (await isRateLimited(db, account.id, now)) {
+      return json({ error: "PUBLIC_POST_RATE_LIMITED" }, { status: 429, headers: { "retry-after": "60" } });
+    }
+    const post = createPublicFeedPost({
+      author: account.displayName,
+      handle: account.handle,
+      title: typeof body.title === "string" ? body.title : "Creator update",
+      body: cleanLongText(body.body, "PUBLIC_POST_INVALID", 420),
+      createdAt: now,
+      source: "shared",
+    });
+    await db.prepare("INSERT INTO public_posts (id, author_id, author, handle, title, body, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .bind(crypto.randomUUID(), account.id, post.author, post.handle, post.title, post.body, post.createdAt).run();
+    return json({ post }, { status: 201 });
+  } catch (error) {
+    return errorResponse(error);
   }
-  return Response.json({ error: "PUBLIC_FEED_PUBLISHING_DISABLED" }, { status: 403, headers: JSON_HEADERS });
 }
 
 export async function readPosts(db: D1DatabaseBinding): Promise<PublicFeedPost[]> {
@@ -65,7 +76,11 @@ export async function readPosts(db: D1DatabaseBinding): Promise<PublicFeedPost[]
       "SELECT author, handle, title, body, created_at FROM public_posts ORDER BY created_at DESC LIMIT 50",
     )
     .all<FeedRow>();
-  return (rows.results ?? []).flatMap((row) => {
+  return rowsToPosts(rows.results ?? []);
+}
+
+function rowsToPosts(rows: readonly FeedRow[]): PublicFeedPost[] {
+  return rows.flatMap((row) => {
     try {
       return [createPublicFeedPost({
         author: row.author,
@@ -84,22 +99,8 @@ export async function readPosts(db: D1DatabaseBinding): Promise<PublicFeedPost[]
 export async function isRateLimited(db: D1DatabaseBinding, handle: string, now: number): Promise<boolean> {
   const windowStart = now - 60_000;
   const rows = await db
-    .prepare("SELECT created_at FROM public_posts WHERE handle = ?1 AND created_at >= ?2 ORDER BY created_at DESC LIMIT 5")
+    .prepare("SELECT id FROM public_posts WHERE author_id = ? AND created_at >= ? ORDER BY created_at DESC LIMIT 5")
     .bind(handle, windowStart)
-    .all<{ created_at: number }>();
+    .all<{ id: string }>();
   return (rows.results ?? []).length >= 5;
-}
-
-async function parsePostBody(request: Request): Promise<PublicFeedPostDraft> {
-  if (request.headers.get("content-type")?.includes("application/json") !== true) {
-    throw new Error("PUBLIC_POST_JSON_REQUIRED");
-  }
-  const parsed = await request.json() as Partial<PublicFeedPostInput>;
-  return {
-    author: String(parsed.author ?? ""),
-    handle: String(parsed.handle ?? ""),
-    title: typeof parsed.title === "string" ? parsed.title : undefined,
-    body: String(parsed.body ?? ""),
-    source: "shared",
-  };
 }

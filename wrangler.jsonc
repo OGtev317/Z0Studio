@@ -1,9 +1,15 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "z0studio",
-  "compatibility_date": "2026-08-08",
+  "compatibility_date": "2026-09-09",
+  "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "out",
-  "observability": {
-    "enabled": true
-  }
+  "d1_databases": [
+    {
+      "binding": "Z0STUDIO_DB",
+      "database_name": "z0studio-production",
+      "database_id": "d5503f5a-6f4f-4637-a286-c18d26e9f85b",
+      "migrations_dir": "migrations"
+    }
+  ]
 }

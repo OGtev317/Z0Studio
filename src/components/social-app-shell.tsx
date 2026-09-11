@@ -1,14 +1,13 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { CodeRain } from "./code-rain";
+import { AccountControl } from "./account-control";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/pro", label: "Pro" },
+  { href: "/profiles", label: "Explore" },
   { href: "/rooms", label: "Rooms" },
-  { href: "/profiles", label: "Profiles" },
   { href: "/messages", label: "Messages" },
-  { href: "/receipts", label: "Receipts" },
+  { href: "/receipts", label: "Passes" },
 ] as const;
 
 type SocialAppShellProps = {
@@ -28,7 +27,6 @@ export function SocialAppShell({ active, title, kicker, children, aside }: Socia
   return (
     <>
       <a className="skip-link" href="#content">Skip to content</a>
-      <CodeRain />
       <main id="content" className="social-app">
         <aside className="social-rail" aria-label="Primary">
           <Link className="social-brand" href="/">
@@ -42,14 +40,15 @@ export function SocialAppShell({ active, title, kicker, children, aside }: Socia
               </Link>
             ))}
           </nav>
-          <Link className="button social-compose" href="/pro">Open Pro</Link>
+          <Link className="button social-compose" href="/pro">Start creating</Link>
+          <AccountControl />
         </aside>
 
         <section className="social-main" aria-labelledby="page-title">
           <header className="social-header">
             <p className="eyebrow">{kicker}</p>
             <div className="social-title-lockup">
-              <img src="/zeero-layer-2-logo.png" alt="" width="108" height="108" />
+              <img src="/zeero-layer-2-logo.png" alt="" width="56" height="56" />
               <div>
                 <p className="social-product-name">Z0Studio</p>
                 <h1 id="page-title">{title}</h1>
@@ -62,17 +61,18 @@ export function SocialAppShell({ active, title, kicker, children, aside }: Socia
         <aside className="social-context" aria-label="Context">
           {aside ?? (
             <>
-              <h2>Privacy edge</h2>
-              <p>Creators get paid access, receipt-bound rooms, and privacy policy automation without making Zeero L1 launch claims.</p>
+              <h2>Start here</h2>
+              <p>Find a creator, follow the conversation, then join the rooms that matter to you.</p>
               <dl>
-                <div><dt>Product</dt><dd>Pro workspace</dd></div>
-                <div><dt>Agent</dt><dd>Access policy brain</dd></div>
-                <div><dt>L1</dt><dd>Future native lane</dd></div>
+                <div><dt>1</dt><dd>Explore creators</dd></div>
+                <div><dt>2</dt><dd>Join a room</dd></div>
+                <div><dt>3</dt><dd>Unlock what you love</dd></div>
               </dl>
             </>
           )}
         </aside>
       </main>
+      <footer className="social-footer"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></footer>
     </>
   );
 }

@@ -1,50 +1,28 @@
 import Link from "next/link";
-import { CreatorRoomAccessFlow } from "../components/creator-room-access-flow";
-import { OpenSocialHub } from "../components/open-social-hub";
-import { PrivateCreatorReceiptRoom } from "../components/private-creator-receipt-room";
-import { PrivatePaymentMvp } from "../components/private-payment-mvp";
-import { ProCommandCenter } from "../components/pro-command-center";
 import { PublicSocialFeed } from "../components/public-social-feed";
 import { SocialAppShell } from "../components/social-app-shell";
-import { ZeeroAgentAccessBrain } from "../components/zeeroagent-access-brain";
 import { socialPosts } from "../lib/social-content";
 
 export default function Home() {
   return (
     <SocialAppShell
       active="home"
-      kicker="Frozen hackathon base, Z0Studio product copy"
-      title="Z0Studio starts from the shipped privacy creator demo."
+      kicker="Your home feed"
+      title="The place for creators and the people who back them."
       aside={<HomeAside />}
     >
-      <section className="feed-composer" aria-label="Private checkout prompt">
+      <section className="home-welcome" aria-label="Welcome to Z0Studio">
         <div className="composer-avatar" aria-hidden="true">ZS</div>
         <div>
-          <h2>Build paid creator access without touching the judged deployment.</h2>
-          <p>This copy keeps the hackathon evidence intact and adds the Z0Studio path for login, checkout, rooms, receipts, and ZeeroAgent access logic.</p>
+          <h2>Follow the work. Join the room when you want more.</h2>
+          <p>Everything starts in the feed. Discover creators, keep up with their posts, and unlock member spaces on your terms.</p>
           <div className="composer-actions">
-            <Link className="button" href="/pro">Open Pro workspace</Link>
-            <Link href="/receipts">View receipt room</Link>
+            <Link className="button" href="/profiles">Explore creators</Link>
+            <Link href="/rooms">Browse rooms</Link>
           </div>
         </div>
       </section>
-
-      <OpenSocialHub />
-      <section className="social-tabs" aria-label="Home filters">
-        <Link className="active" href="/">For you</Link>
-        <Link href="/rooms">Rooms</Link>
-        <Link href="/profiles">Creators</Link>
-        <Link href="/messages">Encrypted messages</Link>
-        <Link href="/receipts">Receipts</Link>
-      </section>
-
-      <ProCommandCenter />
-      <CreatorRoomAccessFlow />
       <PublicSocialFeed seedPosts={socialPosts} />
-
-      <ZeeroAgentAccessBrain />
-      <PrivateCreatorReceiptRoom />
-      <PrivatePaymentMvp />
     </SocialAppShell>
   );
 }
@@ -52,15 +30,14 @@ export default function Home() {
 function HomeAside() {
   return (
     <>
-      <h2>Artifact split</h2>
-      <p>The public hackathon page remains frozen; this local workspace is the Z0Studio product copy.</p>
+      <h2>Make yourself at home</h2>
+      <p>Every creator has an open feed. Rooms bring the closer community together.</p>
       <dl>
-        <div><dt>Live page</dt><dd>Frozen</dd></div>
-        <div><dt>Pro copy</dt><dd>Local build</dd></div>
-        <div><dt>Agent</dt><dd>Access brain</dd></div>
-        <div><dt>Payments</dt><dd>Design-gated</dd></div>
+        <div><dt>Explore</dt><dd>Find your people</dd></div>
+        <div><dt>Follow</dt><dd>Stay in the loop</dd></div>
+        <div><dt>Join</dt><dd>Get closer access</dd></div>
       </dl>
-      <Link className="context-link" href="/receipts">Open receipt evidence</Link>
+      <Link className="context-link" href="/pro">Build your creator space</Link>
     </>
   );
 }

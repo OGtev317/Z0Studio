@@ -1,19 +1,17 @@
 import { CreatorRoomAccessFlow } from "../../components/creator-room-access-flow";
-import { OpenSocialHub } from "../../components/open-social-hub";
+import { ManagedRoomDirectory } from "../../components/managed-room-directory";
 import { SocialAppShell } from "../../components/social-app-shell";
-import { ZeeroAgentAccessBrain } from "../../components/zeeroagent-access-brain";
 
 export default function RoomsPage() {
   return (
     <SocialAppShell
       active="rooms"
-      kicker="Open timeline plus gated rooms"
-      title="Creators can talk publicly and sell access privately."
+      kicker="Creator rooms"
+      title="Join the communities where the real work happens."
       aside={<RoomsAside />}
     >
-      <OpenSocialHub />
+      <ManagedRoomDirectory />
       <CreatorRoomAccessFlow />
-      <ZeeroAgentAccessBrain />
     </SocialAppShell>
   );
 }
@@ -21,13 +19,12 @@ export default function RoomsPage() {
 function RoomsAside() {
   return (
     <>
-      <h2>Access model</h2>
-      <p>Open communication and paid rooms live side by side. Public posts never grant room access by themselves.</p>
+      <h2>Find your room</h2>
+      <p>Follow creators in public, then join the member spaces that fit what you are here for.</p>
       <dl>
-        <div><dt>Public</dt><dd>Timeline and replies</dd></div>
-        <div><dt>Room</dt><dd>Paid member feed</dd></div>
-        <div><dt>Drop</dt><dd>Extra unlock</dd></div>
-        <div><dt>Agent</dt><dd>Policy decision</dd></div>
+        <div><dt>Open feed</dt><dd>See what is new</dd></div>
+        <div><dt>Room</dt><dd>Meet the community</dd></div>
+        <div><dt>Drop</dt><dd>Unlock extras</dd></div>
       </dl>
     </>
   );

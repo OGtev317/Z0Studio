@@ -5,7 +5,7 @@ export const zeeroStreamProPlans = [
     price: "$0",
     cadence: "demo",
     audience: "Creator preview",
-    features: ["Public profile", "Local receipt demo", "One private room preview"],
+    features: ["Public profile", "Starter room preview", "Creator updates"],
   },
   {
     id: "pro",
@@ -13,7 +13,7 @@ export const zeeroStreamProPlans = [
     price: "$19",
     cadence: "per month",
     audience: "Solo creators",
-    features: ["Private rooms", "Receipt-bound access", "ZeeroAgent access rules"],
+    features: ["Member rooms", "Room access", "Member updates"],
   },
   {
     id: "studio",
@@ -21,7 +21,7 @@ export const zeeroStreamProPlans = [
     price: "$79",
     cadence: "per month",
     audience: "Teams and paid communities",
-    features: ["Multiple rooms", "Supporter tiers", "Exportable access evidence"],
+    features: ["Multiple rooms", "Member tiers", "Content drops"],
   },
 ] as const;
 

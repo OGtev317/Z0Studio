@@ -6,7 +6,7 @@ import "./hackathon-polish.css";
 
 export const metadata: Metadata = {
   title: "Z0Studio",
-  description: "A privacy-first creator studio with receipt-bound rooms, ZeeroAgent policy logic, and guarded payment lanes.",
+  description: "A creator platform for public conversation, member rooms, and closer community access.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

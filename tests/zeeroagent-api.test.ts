@@ -29,6 +29,20 @@ test("ZeeroAgent demo cannot be mistaken for authenticated protected access", as
   assert.equal(response.headers.get("cache-control"), "no-store");
 });
 
+test("ZeeroAgent API can return a local room availability decision without granting access", async () => {
+  const response = await onRequestGet({
+    request: new Request("https://example.com/api/zeeroagent?viewer=subscriber-8f2&room=zero-studio-room"),
+  });
+  const payload = await response.json() as {
+    grantsProtectedAccess: boolean;
+    roomAccess: { status: string; canViewRoom: boolean; mode: string };
+  };
+  assert.equal(payload.grantsProtectedAccess, false);
+  assert.equal(payload.roomAccess.status, "available");
+  assert.equal(payload.roomAccess.canViewRoom, true);
+  assert.equal(payload.roomAccess.mode, "local-policy-adapter");
+});
+
 test("ZeeroAgent rejects mutation methods and malformed viewer input", async () => {
   for (const method of ["POST", "PUT", "PATCH", "DELETE"]) {
     const response = await onRequest({ request: new Request("https://example.com/api/zeeroagent", { method }) });

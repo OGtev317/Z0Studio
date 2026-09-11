@@ -18,7 +18,7 @@ export function PrivacyPaymentSetup() {
   const [amount, setAmount] = useState("9");
   const [recipient, setRecipient] = useState("zero.stark");
   const [intents, setIntents] = useState<PrivacyPaymentIntent[]>([]);
-  const [notice, setNotice] = useState("Create a local privacy-payment intent, then use the guarded STRK20 flow below.");
+  const [notice, setNotice] = useState("Create a local checkout draft for a room, drop, or tip.");
 
   useEffect(() => {
     try {
@@ -35,7 +35,7 @@ export function PrivacyPaymentSetup() {
       const next = [intent, ...intents.filter((entry) => entry.id !== intent.id)].slice(0, 8);
       localStorage.setItem(PRIVACY_PAYMENT_INTENTS_KEY, JSON.stringify(next));
       setIntents(next);
-      setNotice("Local privacy-payment intent saved. No wallet, proof, or transaction was requested.");
+      setNotice("Checkout draft saved locally. No wallet, payment, or transaction was requested.");
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "PRIVACY_PAYMENT_INTENT_REJECTED");
     }
@@ -45,14 +45,14 @@ export function PrivacyPaymentSetup() {
     <section className="privacy-payment-setup" aria-labelledby="privacy-payment-title">
       <div className="privacy-payment-head">
         <div>
-          <p className="eyebrow">Primary checkout lane</p>
-          <h2 id="privacy-payment-title">Shielded Starknet payments power room access.</h2>
+          <p className="eyebrow">Creator checkout</p>
+          <h2 id="privacy-payment-title">Sell room access, locked drops, and private tips.</h2>
           <p>
-            Z0Studio uses STRK20 as the native privacy checkout route. thirdweb is not needed for checkout
-            when the goal is shielded payments, private creator transfers, and Z0Pass access receipts.
+            Creators choose what fans are buying and who receives payment. The app keeps the
+            technical payment route behind this setup screen.
           </p>
         </div>
-        <span className="badge">STRK20 · Wallet API</span>
+        <span className="badge">Private payments</span>
       </div>
 
       <ol className="privacy-payment-steps">
@@ -99,9 +99,9 @@ export function PrivacyPaymentSetup() {
       <div className="privacy-intent-list">
         {intents.length === 0 ? <p>No local privacy-payment intents yet.</p> : intents.map((intent) => (
           <article key={intent.id}>
-            <b>{intent.mode}</b>
+            <b>{intent.mode.replaceAll("-", " ")}</b>
             <span>@{intent.creatorHandle} · {intent.roomId} · {intent.amount} STRK</span>
-            <small>{intent.recipient} · {intent.requiredAction} · {intent.status}</small>
+            <small>{intent.recipient} · draft saved · {intent.status}</small>
           </article>
         ))}
       </div>

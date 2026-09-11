@@ -1,25 +1,27 @@
 import Link from "next/link";
-import {
-  zeeroStreamProBuildGates,
-  zeeroStreamProPaymentLanes,
-  zeeroStreamProPlans,
-} from "../lib/z0studio-pro";
+import { zeeroStreamProPlans } from "../lib/z0studio-pro";
 
 export function ProCommandCenter() {
   return (
     <section className="pro-command" aria-labelledby="pro-command-title">
       <div className="pro-hero">
         <p className="eyebrow">Z0Studio</p>
-        <h2 id="pro-command-title">A paid creator workspace with privacy-first access control.</h2>
+        <h2 id="pro-command-title">Turn the people who follow your work into a real community.</h2>
         <p>
-          Z0Studio packages private rooms, creator receipts, tiered access, and ZeeroAgent policy
-          decisions into a product that can earn revenue while the Zeero L1 protocol continues separately.
+          Start with your public profile. When people are ready for more, give them a room,
+          a membership, and a reason to stay.
         </p>
         <div className="composer-actions">
-          <Link className="button" href="#pro-pricing">View pricing</Link>
-          <Link href="/receipts">Inspect receipt room</Link>
+          <Link className="button" href="#room-templates">Choose a room</Link>
+          <Link href="/profiles">View creator profiles</Link>
         </div>
       </div>
+
+      <section className="creator-start-steps" aria-label="Start creating">
+        <article><span>01</span><h3>Build your profile</h3><p>Give people a clear reason to follow you.</p></article>
+        <article><span>02</span><h3>Choose your room</h3><p>Start with a space that fits your community.</p></article>
+        <article><span>03</span><h3>Invite your members</h3><p>Share posts, drops, and direct access in one place.</p></article>
+      </section>
 
       <div id="pro-pricing" className="pro-plan-grid" aria-label="Z0Studio pricing">
         {zeeroStreamProPlans.map((plan) => (
@@ -31,31 +33,13 @@ export function ProCommandCenter() {
             <ul>
               {plan.features.map((feature) => <li key={feature}>{feature}</li>)}
             </ul>
-            <Link className={plan.id === "pro" ? "button" : "button secondary"} href="/pro#payment-lanes">
-              {plan.id === "free" ? "Preview" : "Prepare checkout"}
+            <Link className={plan.id === "pro" ? "button" : "button secondary"} href="#room-templates">
+              {plan.id === "free" ? "Choose a room" : "Explore room templates"}
             </Link>
           </article>
         ))}
       </div>
 
-      <div id="payment-lanes" className="pro-lanes" aria-label="Payment and token lanes">
-        <div>
-          <p className="eyebrow">Payment lanes</p>
-          <h3>Fast UX without handing off Zeero security.</h3>
-        </div>
-        {zeeroStreamProPaymentLanes.map((lane) => (
-          <article key={lane.id}>
-            <span>{lane.status}</span>
-            <h4>{lane.label}</h4>
-            <p>{lane.provider}</p>
-            <small>{lane.boundary}</small>
-          </article>
-        ))}
-      </div>
-
-      <div className="pro-gates" aria-label="Pro build gates">
-        {zeeroStreamProBuildGates.map((gate) => <p key={gate}>{gate}</p>)}
-      </div>
     </section>
   );
 }
