@@ -15,6 +15,7 @@ type Pass = {
 };
 
 function historyDate(timestamp: number): string {
+  if (!Number.isFinite(timestamp) || timestamp <= 0) return "recently";
   return new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", year: "numeric" }).format(timestamp);
 }
 

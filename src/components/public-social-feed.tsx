@@ -66,7 +66,10 @@ export function PublicSocialFeed({ seedPosts }: { seedPosts: readonly SeedPost[]
     void fetch("/api/feed", { credentials: "same-origin" })
       .then(async (response) => response.ok ? parsePublicFeedResponse(await response.json()) : null)
       .then((result) => {
-        if (!result) return;
+        if (!result) {
+          setNotice("Preview mode: posts you save here stay in this browser.");
+          return;
+        }
         setSharedFeed(result.mode === "shared");
         if (result.mode === "shared") {
           setPosts(result.posts);

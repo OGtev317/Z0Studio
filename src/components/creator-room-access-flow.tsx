@@ -88,8 +88,8 @@ export function CreatorRoomAccessFlow({
             <span>Search</span>
             <input value={roomQuery} onChange={(event) => setRoomQuery(event.target.value)} placeholder="Search creators, rooms, drops" maxLength={80} />
           </label>
-          <div className="room-discovery-filterbar" role="tablist" aria-label="Room filters">
-            {roomDiscoveryFilters.map((filter) => <button type="button" role="tab" aria-selected={roomFilter === filter} key={filter} onClick={() => setRoomFilter(filter)}>{roomDiscoveryFilterLabels[filter]}</button>)}
+          <div className="room-discovery-filterbar" role="group" aria-label="Room filters">
+            {roomDiscoveryFilters.map((filter) => <button type="button" aria-pressed={roomFilter === filter} key={filter} onClick={() => setRoomFilter(filter)}>{roomDiscoveryFilterLabels[filter]}</button>)}
           </div>
           <label className="room-sort-control">
             <span>Sort</span>

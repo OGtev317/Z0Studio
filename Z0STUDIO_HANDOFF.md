@@ -12,6 +12,31 @@ Z0Studio was created as a separate local workspace at:
 
 Latest local checkpoint:
 
+- Completed a public-preview and product-cleanup pass without activating
+  payments, wallets, STRK20 flows, D1 migrations, or a Cloudflare deployment.
+  The public feed now enters its browser-local preview mode when a static host
+  returns no `/api/feed` route instead of leaving the interface stuck on a
+  loading message.
+- Replaced the room directory's per-room membership lookup with the existing
+  consolidated `/api/passes` history endpoint. Members now receive consistent
+  pending, active, blocked, and removed state explanations, and blocked
+  accounts are not shown a request action that the server would reject.
+- Corrected room-filter accessibility semantics from incomplete tabs to pressed
+  filter buttons and retained the selected cyan/magenta visual state. Pass date
+  rendering now tolerates malformed historical timestamps.
+- Verification passed: `npm test` (`161/161`), `npm run typecheck`, `npm run
+  build`, `npm audit --omit=dev` (zero vulnerabilities), and `git diff --check`.
+- Public source was published at `https://github.com/OGtev317/Z0Studio` after
+  staged-file hygiene confirmed no environment, local-session, transcript, or
+  agent-chat artifact was included.
+- A local static preview is served on port `3011`, and the existing Zeer0 tunnel
+  config includes `z0studio.zeer0.xyz`. The current cloudflared login belongs
+  to a retired zone, so it cannot create the real-zone DNS record: add a proxied
+  CNAME named `z0studio` in the `zeer0.xyz` zone pointing to
+  `b8be6195-efc4-4333-98ed-9c6d2a8fa0da.cfargotunnel.com`, then verify HTTPS
+  and public routes before calling the preview live. Remove the mistakenly
+  created retired-zone `z0studio.zeer0.xyz.atheraverse.net` record separately.
+
 - Added a member-facing room detail/readiness panel to both `/rooms` surfaces.
   `src/lib/z0studio-room-readiness.ts` now builds a shared panel model from
   existing room metadata and membership/access state: room title, owner label,

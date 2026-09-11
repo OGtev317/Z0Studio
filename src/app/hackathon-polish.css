@@ -915,7 +915,7 @@
   white-space: nowrap;
 }
 
-.room-discovery-filterbar button[aria-selected="true"] {
+.room-discovery-filterbar button[aria-pressed="true"] {
   border-color: var(--outline-cyan);
   color: var(--ink);
   box-shadow: inset 0 -2px 0 var(--outline-magenta);

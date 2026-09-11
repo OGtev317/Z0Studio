@@ -18,6 +18,7 @@ import { buildRoomShareTarget } from "../lib/z0studio-room-sharing";
 type Account = { id: string; role: "member" | "creator" };
 type Room = { id: string; creatorId: string; creator: string; handle: string; name: string; focus: string; entryLabel: string; members: number; templateId?: string; createdAt?: number; updatedAt?: number; customization?: RoomCustomization };
 type Membership = { state: "none" | "pending" | "active" | "blocked" | "removed"; canEnter: boolean };
+type Pass = { room_id: string; state: Exclude<Membership["state"], "none"> };
 type RoomPost = { id: string; body: string; created_at: number; author: string; handle: string };
 
 function requestText(error: unknown): string {
@@ -53,19 +54,21 @@ export function ManagedRoomDirectory() {
       setRooms(roomData.rooms);
       setAccount(accountData.account);
       if (accountData.account) {
-        void fetch("/api/follows", { credentials: "same-origin" })
-          .then(async (response) => response.ok ? response.json() as Promise<{ handles: string[] }> : null)
-          .then((result) => {
-            if (result) setFollowingHandles(result.handles);
-          })
-          .catch(() => undefined);
-      }
-      if (accountData.account) {
-        const pairs = await Promise.all(roomData.rooms.map(async (room) => {
-          const response = await fetch(`/api/rooms/${room.id}/access-requests`, { credentials: "same-origin" });
-          return [room.id, response.ok ? await response.json() as Membership : { state: "none", canEnter: false } as Membership] as const;
-        }));
-        setMemberships(Object.fromEntries(pairs));
+        const [followResponse, passResponse] = await Promise.all([
+          fetch("/api/follows", { credentials: "same-origin" }),
+          fetch("/api/passes", { credentials: "same-origin" }),
+        ]);
+        if (followResponse.ok) {
+          const follows = await followResponse.json() as { handles: string[] };
+          setFollowingHandles(follows.handles);
+        }
+        if (passResponse.ok) {
+          const passData = await passResponse.json() as { passes: Pass[] };
+          setMemberships(Object.fromEntries(passData.passes.map((pass) => [pass.room_id, {
+            state: pass.state,
+            canEnter: pass.state === "active",
+          }])))
+        }
       }
     } catch {
       setNotice("");
@@ -148,8 +151,8 @@ export function ManagedRoomDirectory() {
           <span>Search</span>
           <input value={roomQuery} onChange={(event) => setRoomQuery(event.target.value)} placeholder="Search creators, rooms, drops" maxLength={80} />
         </label>
-        <div className="room-discovery-filterbar" role="tablist" aria-label="Room filters">
-          {roomDiscoveryFilters.map((filter) => <button type="button" role="tab" aria-selected={roomFilter === filter} key={filter} onClick={() => setRoomFilter(filter)}>{roomDiscoveryFilterLabels[filter]}</button>)}
+        <div className="room-discovery-filterbar" role="group" aria-label="Room filters">
+          {roomDiscoveryFilters.map((filter) => <button type="button" aria-pressed={roomFilter === filter} key={filter} onClick={() => setRoomFilter(filter)}>{roomDiscoveryFilterLabels[filter]}</button>)}
         </div>
         <label className="room-sort-control">
           <span>Sort</span>
